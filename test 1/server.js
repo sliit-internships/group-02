@@ -1,5 +1,8 @@
 require('dotenv').config({path: "./config.env"});
 const express = require('express');
+const mysqli = require('./db')
+
+mysqli.getConnection();
 
 const app = express();
 
