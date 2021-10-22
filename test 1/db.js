@@ -35,15 +35,17 @@ const mysqlConnection  = mysql.createConnection({
 //     }
 // }
 
-module.exports = { 
-    getConnection() {
-        mysqlConnection.connect(err => {
-            if(err) {
-                console.error('Error connecting: ' + err.message);
-                return;
-            }
+// module.exports = { 
+//     getConnection() {
+//         mysqlConnection.connect(err => {
+//             if(err) {
+//                 console.error('Error connecting: ' + err.message);
+//                 return;
+//             }
 
-            console.log('Connected as id: ' + mysqlConnection.threadId)
-        })
-    }
-}
+//             console.log('Connected as id: ' + mysqlConnection.threadId)
+//         })
+//     }
+// }
+
+module.exports = mysqlConnection;
