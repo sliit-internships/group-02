@@ -47,17 +47,15 @@ exports.register = async (req, res, next) => {
 
     var validPassword = passwordRegex.test(password);
     if (!validPassword) {
-      return res
-        .status(400)
-        .send({
-          message:
-            "Password must contain minimum 8 characters, one UPPERCASE letter, one lowercase letter, one number and one special character!!!",
-        });
+      return res.status(400).send({
+        message:
+          "Password must contain minimum 8 characters, one UPPERCASE letter, one lowercase letter, one number and one special character!!!",
+      });
     }
 
-    const results = db.promise().query(
-      `SELECT id FROM students WHERE username = ('${email}')`
-    );
+    const results = db
+      .promise()
+      .query(`SELECT id FROM students WHERE username = ('${email}')`);
     if (results.length) {
       return res.status(400).send({ message: "Email already in use!!!" });
     } else {
@@ -65,12 +63,15 @@ exports.register = async (req, res, next) => {
         if (err) {
           return res.status(500).send({ message: err.message });
         } else {
-          db.query(`INSERT INTO students (username, password) VALUES ('${email}', '${hash}')`, (error, result) => {
-            if(error){
-              return res.status(400).json({ msg: error.message });
+          db.query(
+            `INSERT INTO students (username, password) VALUES ('${email}', '${hash}')`,
+            (error, result) => {
+              if (error) {
+                return res.status(400).send({ msg: error.message });
+              }
+              return res.status(201).send({ msg: "Done" });
             }
-            return res.status(201).send({ msg: "Done" });
-          });
+          );
         }
       });
     }
@@ -79,28 +80,34 @@ exports.register = async (req, res, next) => {
   }
 };
 
-
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
 
   db.query(
     `SELECT * FROM students WHERE username = ('${email}')`,
     (error, result) => {
-      if(error){
-        return res.status(400).json({ msg: error.message });
+      if (error) {
+        return res.status(400).send({ msg: error.message });
       }
-      if(!result.length){
-        return res.status(400).json({ msg: "Credentials inserted are incorrect" });
+      if (!result.length) {
+        return res
+          .status(400)
+          .send({ msg: "Credentials inserted are incorrect" });
       }
 
-      bcrypt.compare(password, result[0]['password'], (error, result) => {
-        if(error){
-          return res.status(400).json({ msg: "Credentials inserted are incorrect" });
+      bcrypt.compare(password, result[0]["password"], (err, result) => {
+        if (err) {
+          return res
+            .status(400)
+            .send({ msg: "Credentials inserted are incorrect" });
         }
-        if(result){
-          return res.status(201).json({ msg: "done" });
+        if (result) {
+          return res.status(201).send({ msg: "done" });
         }
-      })
+        return res
+            .status(400)
+            .send({ msg: "Credentials inserted are incorrect" });
+      });
     }
   );
 };
