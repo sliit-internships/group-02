@@ -5,7 +5,7 @@ const {
   login,
   resetpassword,
   forgotpassword,
-} = require("../controllers/Users");
+} = require("../controllers/user.controller");
 
 router.route("/register").post(register);
 router.route("/login").post(login);
