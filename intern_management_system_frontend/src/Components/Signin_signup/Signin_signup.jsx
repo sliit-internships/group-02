@@ -4,7 +4,7 @@ import "./Signin_signup.css"
 const Signin_signup = (props) => {
     return (
 
-        <div className="container">
+        <div className="container" >
             <div className="login-wrap" >
                 <div className="login-html">
                     <input
