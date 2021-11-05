@@ -21,7 +21,7 @@ const user = function (User) {
 user.login = async (details) => {
   const response = await new Promise((resolve, reject) => {
     db.query(
-      `SELECT * FROM students WHERE username = ?`,
+      `SELECT * FROM users WHERE email = ?`,
       [details.email],
       (err, res) => {
         if (err) {

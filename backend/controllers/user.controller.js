@@ -90,11 +90,11 @@ exports.register = async (req, res, next) => {
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
   try {
-    // if (!req.body.email || !req.body.password || !req.body.full_name || !req.body.it_number || !req.body.registration_year || !req.body.second_year_completion_year|| !req.body.second_year_completion_semester || !req.body.specialization || !req.body.mobile_number || !req.body.home_number || !req.body.internship_start_date) {
-    //   return res
-    //     .status(400)
-    //     .send({ message: "Fields cannot be empty!!!" });
-    // }
+    if (!req.body.email || !req.body.password || !req.body.full_name || !req.body.it_number || !req.body.registration_year || !req.body.second_year_completion_year|| !req.body.second_year_completion_semester || !req.body.specialization || !req.body.mobile_number || !req.body.home_number || !req.body.internship_start_date) {
+      return res
+        .status(400)
+        .send({ message: "Fields cannot be empty!!!" });
+    }
 
     if (req.body.email.length > 254) {
       return res.status(400).send({ message: "Invalid Email!!!" });
