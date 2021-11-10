@@ -24,6 +24,8 @@ function sendData(e){
         alert(err)
 })
 
+}
+
     return (
 
         <div className="container">
@@ -86,6 +88,8 @@ function sendData(e){
 
                         <div className="sign-up-htm">
                             <form onSubmit={sendData}>
+
+
                             <div className="group">
                                 <label htmlFor="user" className="label">
                                     Email
@@ -95,6 +99,10 @@ function sendData(e){
                                     setEmail(e.target.value);
                                 }}/>
                             </div>
+
+
+
+
                             <div className="group">
                                 <label htmlFor="pass" className="label">
                                     Password
@@ -109,6 +117,9 @@ function sendData(e){
                                         setPassword(e.target.value);
                                     }}/>
                             </div>
+
+
+
                             <div className="group">
                                 <label htmlFor="pass" className="label">
                                     Repeat Password
@@ -122,6 +133,9 @@ function sendData(e){
                                         setRepeatPassword(e.target.value);
                                     }}/>
                             </div>
+
+
+
 
                             <div className="group">
                                 <input type="submit" className="button" value="Sign Up" />
