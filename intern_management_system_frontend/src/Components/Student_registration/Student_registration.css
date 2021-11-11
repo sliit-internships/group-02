@@ -1,0 +1,36 @@
+.cStyle{
+    margin-left: 170px;
+}
+
+.shead2{
+    height: 93px;
+    background-color: #bf93f5;
+    padding: 23px 5px 0px 35px;
+}
+
+.s_r_form-group {
+    margin-bottom: 2rem;
+
+}
+.s_r_form-text {
+    margin-top: -0.3rem;
+    font-style: italic;
+}
+.s_r_space {
+    margin-top: 8px;
+}
+
+.s_r_studentRegCard{
+    width: 80%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+.s_r_card-body{
+    padding: 2.25rem;
+}
+
+
+.s_r_h2{
+    margin-bottom: 30px;
+
+}
