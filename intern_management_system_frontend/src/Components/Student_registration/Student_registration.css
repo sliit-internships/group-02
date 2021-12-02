@@ -1,15 +1,39 @@
+.sr_headImage{
+    margin-top: -854px;
+
+    margin-left: 820px;
+}
+
+.sr_HeadTopic{
+    position: absolute;
+    margin-top: -596px;
+    margin-left: 200px;
+}
+
+.sr_HeadTopicStyle{
+    font-family: cursive;
+}
+
+.sr_Head_para_TopicStyle{
+    font-family: cursive;
+    width: 40%;
+}
+
 .cStyle{
-    margin-left: 170px;
+    margin-left: 90px;
+    margin-right: 50px;
 }
 
 .shead2{
-    height: 93px;
-    background-color: #bf93f5;
-    padding: 23px 5px 0px 35px;
+    font-family: unset;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    color: #5c5959;
 }
 
 .s_r_form-group {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 
 }
 .s_r_form-text {
@@ -21,7 +45,7 @@
 }
 
 .s_r_studentRegCard{
-    width: 80%;
+    width: 100%;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
 }

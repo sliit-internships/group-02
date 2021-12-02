@@ -1,19 +1,23 @@
 import React from "react";
 import './App.css';
-import Signin_signup from "./Components/Signin_signup/Signin_signup";
+
+import DailyDiary from "./Components/DailyDiary/DailyDiary";
+import InternshipRegistration from "./Components/InternshipRegistration/InternshipRegistration";
+import ChangeSupervisor from "./Components/ChangeSupervisor/ChangeSupervisor";
 import Student_registration from "./Components/Student_registration/Student_registration";
-import HomePage from "./Pages/HomePage";
-import {Redirect, Route, Switch} from "react-router-dom";
+import Signin_signup from "./Components/Signin_signup/Signin_signup";
+import StudentProfile from "./Components/StudentProfile/StudentProfile";
+import StudentRegistrationDetails from "./Components/StudentRegistrationDetails/StudentRegistrationDetails";
+
+
 
 
 function App() {
   return (
     <div className="App">
-<Switch>
-    <Route/>
-    {/*<Redirect to={HomePage}/>*/}
-</Switch>
-       <Signin_signup />
+
+
+       <Student_registration />
 
     </div>
   );

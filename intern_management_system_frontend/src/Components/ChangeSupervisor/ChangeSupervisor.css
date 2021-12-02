@@ -1,0 +1,43 @@
+.csImage{
+    width: 800px;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.cs_Style{
+    margin-left: 120px;
+    margin-right: 50px;
+}
+
+.cshead2{
+    height: 93px;
+    text-align: center;
+    padding: 23px 5px 0px 35px;
+}
+
+.cs_form-group {
+    margin-bottom: 2rem;
+
+}
+.cs_form-text {
+    margin-top: -0.3rem;
+    font-style: italic;
+}
+.cs_space {
+    margin-top: 8px;
+}
+
+.cs_studentRegCard{
+    width: 100%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+.cs_card-body{
+    padding: 2.25rem;
+}
+
+
+.cs_h2{
+    margin-bottom: 30px;
+
+}
