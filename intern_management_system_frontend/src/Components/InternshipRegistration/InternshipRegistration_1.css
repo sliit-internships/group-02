@@ -1,0 +1,91 @@
+
+
+
+.ir1_cardStyle{
+
+}
+
+.i_r_form-group {
+    margin-bottom: 1rem;
+
+}
+.i_r_form-text {
+    margin-top: -0.3rem;
+    font-style: italic;
+}
+.i_r_space {
+    margin-top: 8px;
+}
+
+.i_r_studentRegCard{
+
+    width: 90%;
+    box-shadow: 0 1px 9px rgba(68, 68, 68, 0.15), 0 10px 7px rgba(59, 59, 59, 0.13);
+
+}
+.i_r_card-body{
+    padding: 2.25rem;
+}
+
+
+
+
+.nextBtn {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 40px;
+
+}
+
+.fieldSpace{
+    margin-bottom: 10px;
+}
+
+.otherField{
+    width: 300px;
+}
+
+
+
+
+
+.space1{
+    margin-bottom: 30px;
+}
+
+.form-select:focus {
+    border-color: #BA68C8;
+    outline: 0;
+    box-shadow: none;
+}
+
+.skewBtn {
+    width: 191px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    transition: 0.5s;
+    font-size: 18px;
+
+}
+.skewBtn:hover {
+    border: none;
+    color: white;
+    font-size: 20px;
+    transform: scale(1.1);
+}
+
+
+.purple {
+    border: 2px solid #752283;
+    color: #752283;
+}
+.purple:hover {
+    background-color: #752283;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
