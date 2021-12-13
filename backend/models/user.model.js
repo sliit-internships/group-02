@@ -12,11 +12,10 @@ const user = function (User) {
   this.home_number = User.home_number;
   this.email = User.email;
   this.internship_start_date = User.internship_start_date;
-  this.created_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
-  this.updated_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  this.created_at = new Date().toISOString().slice(0, 19).replace("T", " ");
+  this.updated_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   this.password = User.password;
 };
-
 
 user.login = async (details) => {
   const response = await new Promise((resolve, reject) => {
@@ -24,25 +23,31 @@ user.login = async (details) => {
       `SELECT * FROM users WHERE email = ?`,
       [details.email],
       (err, res) => {
-        if (err) {
+        if (err || !res.length) {
           console.log("Error finding the user", err);
-          reject(new Error(err.message));
-        } else if (!res.length) {
-          console.log("Username not found");
-          resolve("Credentials inserted are incorrect");
-        } else
+          //reject(new Error(err.message));
+          reject("Credentials inserted are incorrect");
+          //} else if (!res.length) {
+          //console.log("Username not found");
+          //reject("Credentials inserted are incorrect");
+        } else {
           bcrypt.compare(details.password, res[0].password, (err, result) => {
             if (err) {
               console.log("Error fetching details", err);
               reject(new Error(err.message));
-            } else if (result) {
+            }
+            if (result) {
               console.log("Successful");
-              resolve(res);
+              resolve(res[0].it_number);
             } else {
-              console.log("Password inserted is not matching", err);
-              resolve("Credentials inserted are incorrect");
+              console.log("Password inserted is not matching");
+              reject("Credentials inserted are incorrect");
+              //response.json({success: false, message:"passwords "});
+              //return result.status(500).json({ msg: "error.message" });
+              //reject("error");
             }
           });
+        }
       }
     );
   });
@@ -61,7 +66,7 @@ user.register = async (details) => {
           reject(new Error(err.message));
         } else if (res.length) {
           console.log("User already exists");
-          resolve("User Exists");
+          reject("User Exists");
         } else {
           bcrypt.hash(details.password, 10, (err, hash) => {
             if (err) {
@@ -74,12 +79,13 @@ user.register = async (details) => {
                   if (error) {
                     console.log("Error with DB2", err);
                     reject(new Error(error.message));
-                  } else if (result) {
+                  }
+                  if (result) {
                     console.log("Added User");
-                    resolve("User Added", result);
+                    resolve("User Added");
                   } else {
                     console.log("User was not added");
-                    resolve("User was not added", result);
+                    reject("User was not added", result);
                   }
                 }
               );
@@ -88,6 +94,81 @@ user.register = async (details) => {
         }
       }
     );
+  });
+  return response;
+};
+
+user.profile = async (details) => {
+
+};
+
+user.forgotpassword = async (details) => {
+  const response = await new Promise((resolve, reject) => {
+    db.query(
+      `SELECT * FROM users WHERE email = ?`,
+      [details.email],
+      (err, res) => {
+        if (err || !res.length) {
+          console.log("Error finding the user", err);
+          reject(
+            "Credentials inserted are incorrect or email does not exist in the system!!!"
+          );
+        } else {
+          console.log("Successful");
+          resolve(res[0].email);
+        }
+      }
+    );
+  });
+  return response;
+};
+
+user.resetpasswordEmailCheck = async (details) => {
+  console.log(details);
+  const response = await new Promise((resolve, reject) => {
+    db.query(
+      `SELECT * FROM users WHERE email = ?`,
+      [details.email],
+      (err, res) => {
+        if (err || !res.length) {
+          console.log("Error finding the user", err);
+          console.log(details);
+          reject("Invalid Attempt!!!");
+        } else {
+          console.log("Successful");
+          resolve(res[0].email);
+        }
+      }
+    );
+  });
+  return response;
+};
+
+user.resetpassword = async (pw, em) => {
+  const response = new Promise((resolve, reject) => {
+    bcrypt.hash(pw.password, 10, (err, hash) => {
+      if (err) {
+        console.log("Error with hashing");
+        reject(new Error(err.message));
+      } else {
+        db.query(
+          `UPDATE users SET password='${hash}' WHERE email='${em.email}'`,
+          (error, result) => {
+            if (error) {
+              console.log("Error with DB2", err);
+              reject(new Error(error.message));
+            }
+            if (result) {
+              console.log("Password Updated");
+              resolve("Password Updated Successfully");
+            } else {
+              console.log("Password Updated Failed");
+              reject("Unsuccessful", result);
+            }
+          }
+        );
+      }
+    });
   });
   return response;
 };
