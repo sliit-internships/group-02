@@ -19,13 +19,13 @@ const Signin_signup = (props) => {
                         <li className="nav-item" role="presentation">
                             <button className="nav-link signIn-Up_font" id="pills-home-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-signIn" type="button" role="tab" aria-controls="pills-signIn"
-                                    aria-selected="true">SIGN - IN
+                                    aria-selected="true">SIGNIN
                             </button>
                         </li>
                         <li className="nav-item" role="presentation">
                             <button className="nav-link signIn-Up_font" id="pills-profile-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-signUp " type="button" role="tab" aria-controls="pills-signUp"
-                                    aria-selected="false">SIGN - UP
+                                    aria-selected="false">SIGNUP
                             </button>
                         </li>
 
@@ -47,7 +47,7 @@ const Signin_signup = (props) => {
                                     <input type="password" className="form-control" id="exampleInputPassword1"/>
                                 </div>
 
-                                <button type="submit" className="btn btn-primary login-submitBtn">SIGNIN</button>
+                                <button type="submit" className="btn btn-primary login-submitBtn ">SIGNIN</button>
 
                                 <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
@@ -97,15 +97,7 @@ const Signin_signup = (props) => {
                                            aria-describedby="emailHelp"/>
 
                                 </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">Create new password</label>
-                                    <input type="password" className="form-control" id="exampleInputPassword1"/>
-                                </div>
 
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">Re-enter password</label>
-                                    <input type="password" className="form-control" id="exampleInputPassword1"/>
-                                </div>
 
                                 <button type="submit" data-bs-target="#pills-signIn" className="btn btn-primary login-submitBtn">SAVE CHANGES</button>
                             </form>

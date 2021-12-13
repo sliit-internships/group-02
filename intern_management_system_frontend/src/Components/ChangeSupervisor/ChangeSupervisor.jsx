@@ -9,7 +9,7 @@ const ChangeSupervisor = (props) => {
         <div>
             <div className=" row">
 
-                    <h1 className="cshead2">Supervisor Change Form</h1>
+                    <h1 className="cshead2">SUPERVISOR CHANGE FORM</h1>
 
             </div>
 
@@ -75,7 +75,7 @@ const ChangeSupervisor = (props) => {
 
                                     </div>
 
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button className="skewBtn purple ">REGISTER</button>
                                 </form>
                             </div>
                         </div>

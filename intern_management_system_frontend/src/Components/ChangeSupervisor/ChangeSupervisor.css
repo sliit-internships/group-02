@@ -13,6 +13,8 @@
     height: 93px;
     text-align: center;
     padding: 23px 5px 0px 35px;
+
+    color: #504e4e;
 }
 
 .cs_form-group {
@@ -29,15 +31,38 @@
 
 .cs_studentRegCard{
     width: 100%;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 1px 9px rgba(68, 68, 68, 0.15), 0 10px 7px rgba(59, 59, 59, 0.13);
 
 }
 .cs_card-body{
     padding: 2.25rem;
 }
 
-
-.cs_h2{
-    margin-bottom: 30px;
+.skewBtn {
+    width: 191px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    transition: 0.5s;
+    font-size: 18px;
 
 }
+.skewBtn:hover {
+    border: none;
+    color: white;
+    font-size: 20px;
+    transform: scale(1.1);
+}
+
+
+.purple {
+    border: 2px solid #752283;
+    color: #752283;
+}
+.purple:hover {
+    background-color: #752283;
+    transition: all 0.3s ease-in-out;
+}
+
+
