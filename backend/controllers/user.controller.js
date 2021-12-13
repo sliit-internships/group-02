@@ -243,17 +243,21 @@ exports.logout = async (req, res) => {
 
 exports.profile = async (req, res) => {
   try {
-    res.json(req.user);
-    // result
-    //   .then((users) => {
-    //     res.json({ users });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     return res.status(500).send({ err});
-    //   });
+
+    const userData = new userModel(req.user);
+    const result = userModel.profile(userData);
+    console.log(result);
+
+    result
+      .then((users) => {
+        res.json(users);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).send({ err });
+      });
   } catch (error) {
-    return res.status(500).send({ err: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
 

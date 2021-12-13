@@ -99,7 +99,22 @@ user.register = async (details) => {
 };
 
 user.profile = async (details) => {
-
+  const response = await new Promise((resolve, reject) => {
+    db.query(
+      `SELECT full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date FROM users WHERE it_number = ?`,
+      [details.it_number],
+      (err, res) => {
+        if (err || !res.length) {
+          console.log("Error finding the user", err);
+          reject("Error loading the profile");
+        } else {
+          console.log("Successful");
+          resolve(res);
+        }
+      }
+    );
+  });
+  return response;
 };
 
 user.forgotpassword = async (details) => {
