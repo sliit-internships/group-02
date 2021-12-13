@@ -1,37 +1,25 @@
-.sr_headImage{
-    margin-top: -854px;
 
-    margin-left: 820px;
+.sr_sideImage{
+    width: 20%;
 }
-
-.sr_HeadTopic{
-    position: absolute;
-    margin-top: -596px;
-    margin-left: 200px;
-}
-
-.sr_HeadTopicStyle{
-    font-family: cursive;
-}
-
-.sr_Head_para_TopicStyle{
-    font-family: cursive;
-    width: 40%;
-}
-
 .cStyle{
     margin-left: 90px;
     margin-right: 50px;
+    margin-top: 20px;
+}
+.STcolStyle{
+    padding-right: 153px;
 }
 
-.shead2{
-    font-family: unset;
-    text-align: center;
+.shead2 {
+
+
     margin-bottom: 60px;
-    margin-top: 30px;
+    margin-top: -145px;
     color: #5c5959;
+    position: absolute;
+    margin-left: 555px;
 }
-
 .s_r_form-group {
     margin-bottom: 2.5rem;
 
@@ -46,15 +34,42 @@
 
 .s_r_studentRegCard{
     width: 100%;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
+    box-shadow: 0 1px 9px rgba(68, 68, 68, 0.15), 0 10px 7px rgba(59, 59, 59, 0.13);
 }
 .s_r_card-body{
     padding: 2.25rem;
 }
 
 
-.s_r_h2{
-    margin-bottom: 30px;
+.skewBtn {
+    width: 191px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    transition: 0.5s;
+    font-size: 18px;
 
 }
+ .skewBtn:hover {
+    border: none;
+    color: white;
+    font-size: 20px;
+    transform: scale(1.1);
+}
+
+
+.purple {
+    border: 2px solid #752283;
+    color: #752283;
+}
+.purple:hover {
+    background-color: #752283;
+    transition: all 0.3s ease-in-out;
+}
+
+.buttonPosition {
+    margin-left: 1107px;
+}
+
+

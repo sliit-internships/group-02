@@ -1,22 +1,16 @@
 import React from "react";
 import "./Student_registration.css"
+import {Link} from "react-router-dom";
 
 
 const Student_registration = (props) => {
     return (
         <div>
-            <img src="https://preview.colorlib.com/theme/eclipse/img/home-banner-bg.png" class="img-fluid" alt="..."/>
-            <div className="sr_HeadTopic"><h1 className="text-white sr_HeadTopicStyle">Take the first step </h1>
-                <h1 className="text-white sr_HeadTopicStyle">to join the internship with us</h1><br/>
-                <p className="text-white sr_Head_para_TopicStyle">Getting an internship experience is a must for you to learn and grow. Give them a chance to achieve this goal.
-                    Contact your interns by giving them training opportunities in which your full-time employees participate.
-                    Allow your interns to attend courses,
-                    seminars, on-the-job training and any other standard procedures required within your company and industry.</p>
-            </div>
 
-            <img src="https://preview.colorlib.com/theme/eclipse/img/header-img.png.webp" className="sr_headImage"/>
+            <img className="sr_sideImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMxIrhnZo5xm0a_lcNg3MAz1r9IrP_NvA2S3DW6Ti72tKkwDIQ"/>
 
-            <h1 className="s_r_h2 shead2">Form I-1A : To be filled by the student</h1>
+
+            <div><h1 className="s_r_h2 shead2">STUDENT REGISTRATION FORM</h1></div>
 
             <div className="cStyle">
                 <div className="card s_r_studentRegCard ">
@@ -24,9 +18,9 @@ const Student_registration = (props) => {
 
                         <form>
                             <div className="row">
-                                <div className="col">
+                                <div className="col STcolStyle" >
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentIdNumber">SLIIT Student Identification
+                                        <label htmlFor="studentIdNumber">1. SLIIT Student Identification
                                             Number</label><br/>
                                         <small id="studentIdNumberHelp" className="form-text text-muted s_r_form-text">Please
                                             enter your student id number without any spaces, e.g IT17121966</small>
@@ -34,7 +28,7 @@ const Student_registration = (props) => {
                                                aria-describedby="emailHelp" placeholder="Enter your answer"/>
                                     </div>
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentCurrentYear">Current Year of Registration at
+                                        <label htmlFor="studentCurrentYear">2. Current Year of Registration at
                                             SLIIT</label>
                                         <select className="form-select space s_r_space">
 
@@ -46,7 +40,7 @@ const Student_registration = (props) => {
                                         </select>
                                     </div>
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentPlaningYear">Which calendar year have you completed or
+                                        <label htmlFor="studentPlaningYear">3. Which calendar year have you completed or
                                             planning to complete your second year?</label>
                                         <select className="form-select space s_r_space"
                                                 placeholder="Example input placeholder">
@@ -59,7 +53,7 @@ const Student_registration = (props) => {
                                         </select>
                                     </div>
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentYearPeriod">Which period of the year are you planning to
+                                        <label htmlFor="studentYearPeriod">4. Which period of the year are you planning to
                                             complete or completed your second year?</label>
                                         <select className="form-select space s_r_space"
                                                 placeholder="Example input placeholder">
@@ -69,7 +63,7 @@ const Student_registration = (props) => {
                                         </select>
                                     </div>
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="Specialization">Specialization</label>
+                                        <label htmlFor="Specialization">5. Specialization</label>
                                         <select className="form-select space s_r_space"
                                                 placeholder="Example input placeholder">
                                             <option>IT</option>
@@ -83,7 +77,7 @@ const Student_registration = (props) => {
                                         </select>
                                     </div>
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentName">Student Name with Initials</label><br/>
+                                        <label htmlFor="studentName">6. Student Name with Initials</label><br/>
                                         <small id="studentNameHelp" className="form-text text-muted s_r_form-text">e.g.
                                             Rathnayaka M.H.K.R.</small>
                                         <input type="text" className="form-control space s_r_space"
@@ -93,7 +87,7 @@ const Student_registration = (props) => {
                                 </div>
                                 <div className="col">
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentMobile">Student Mobile Phone Number</label><br/>
+                                        <label htmlFor="studentMobile">7. Student Mobile Phone Number</label><br/>
                                         <small id="studentMobileHelp" className="form-text text-muted s_r_form-text">e.g.
                                             94772269563</small>
                                         <input type="text" className="form-control space s_r_space"
@@ -102,7 +96,7 @@ const Student_registration = (props) => {
                                     </div>
 
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentHome">Student Home Phone Number</label><br/>
+                                        <label htmlFor="studentHome">8. Student Home Phone Number</label><br/>
                                         <small id="studentHomeHelp" className="form-text text-muted s_r_form-text">e.g.
                                             94112590558</small>
                                         <input type="text" className="form-control space s_r_space"
@@ -111,7 +105,7 @@ const Student_registration = (props) => {
                                     </div>
 
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="studentEmail">Student E-Mail (Enter One Primary E-mail Address
+                                        <label htmlFor="studentEmail">9. Student E-Mail (Enter One Primary E-mail Address
                                             that
                                             you use)</label><br/>
                                         <small id="studentEmailHelp" className="form-text text-muted s_r_form-text">Students
@@ -125,8 +119,9 @@ const Student_registration = (props) => {
                                     </div>
 
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="date">What is the date you started or plan to start your
-                                            internship?</label>
+                                        <label htmlFor="date">10.What is the date you started or plan to start your
+                                            internship?</label><br/>
+                                        <small id="studentEmailHelp" className="form-text text-muted s_r_form-text">dd/MM/yyyy</small>
                                         <input type="date" className="form-control space s_r_space"
                                                id="studentInputEmail"
                                                aria-describedby="dateHelp"
@@ -134,7 +129,7 @@ const Student_registration = (props) => {
                                     </div>
 
                                     <div className="form-group s_r_form-group">
-                                        <label htmlFor="supervisorEmail">Specify Supervisor E-Mail address for the
+                                        <label htmlFor="supervisorEmail">11. Specify Supervisor E-Mail address for the
                                             supervisor to fill his/her information</label><br/>
                                         <small id="supervisorEmailHelp" className="form-text text-muted s_r_form-text">Enter
                                             supervisor's organizational e-mail address where it will be the e-mail
@@ -147,8 +142,12 @@ const Student_registration = (props) => {
                                     </div>
                                 </div>
 
-                                <button type="submit" className="btn btn-primary">Submit</button>
+
+
+
                             </div>
+
+                            <button className="skewBtn purple buttonPosition"><Link to="/registered_student_home">REGISTER</Link></button>
 
 
                         </form>
