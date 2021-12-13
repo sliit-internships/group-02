@@ -1,0 +1,46 @@
+.itemStyle{
+    margin-bottom: 40px;
+}
+
+.accordion-button:focus{
+    box-shadow: none;
+}
+
+.diaryImage{
+    width: 636px;
+}
+
+.h1tag{
+    margin-top: 130px;
+    font-family: unset;
+    color: #5c5959;
+}
+
+.h4tag{
+    font-family: cursive;
+    color: gray;
+}
+
+.accordionStyle{
+    max-width: 1000px;
+    margin-top: 50px;
+}
+
+.imageCol,
+.topicCol{
+    margin-left: 95px;
+}
+
+.table_week_font{
+    font-weight: 500;
+}
+
+.accordion-button:not(.collapsed) {
+
+    background-color: #cbcbcb;
+
+}
+
+.accordion-button:not(.collapsed) {
+    color: black;
+}
