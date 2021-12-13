@@ -1,0 +1,58 @@
+
+.se_image {
+    margin-left: 1019px;
+    width: 500px;
+}
+
+
+.se_topic {
+    margin-top: -142px;
+    margin-left: 162px;
+
+    color: #5c5959;
+
+
+}
+
+.se_topic_pTag{
+    width: 850px;
+}
+
+
+.seFormCard {
+    width: 1200px;
+    margin-left: 160px;
+    margin-top: 50px;
+}
+
+.seCardStyle{
+    padding: 30px;
+}
+
+.form-check-input:checked {
+    background-color: #752283;
+    border-color: #752283;
+}
+
+.form-check-input:focus {
+     border-color: #752283;
+     outline: 0;
+     box-shadow: none;
+}
+
+.form-text {
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.purple {
+    border: 2px solid #752283;
+    color: #752283;
+}
+.purple:hover {
+    background-color: #752283;
+    transition: all 0.3s ease-in-out;
+}
+
