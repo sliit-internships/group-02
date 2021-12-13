@@ -8,8 +8,8 @@ const DailyDiary = (props) => {
             <div className="container">
                 <div className="row">
                     <div className="col topicCol">
-                        <h1 className="h1tag">INTERN’S DAILY DIARY</h1><br/>
-                        <h4 className="h4tag">Please be sure to upload the completed form to the folder provided once a week and until the end of the internship period of six months.</h4>
+                        <h1 className="h1tag">DAILY DIARIES</h1><br/>
+                        <p className="h4tag">Please be sure to upload the completed form to the folder provided once a week and until the end of the internship period of six months.</p>
                     </div>
                     <div className="col imageCol">
                         <img src="https://web-revenue.ru/wp-content/uploads/2020/02/elementy-veb-sayta.jpg" className="diaryImage"/>
@@ -35,25 +35,25 @@ const DailyDiary = (props) => {
 
                         <table className=" table">
                             <tr>
-                                <th scope="row">Week 1</th>
+                                <th className="table_week_font" scope="row">Week 1</th>
                                 <td>Upload the diary daily for the first week of the first month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 2</th>
+                                <th className="table_week_font" scope="row">Week 2</th>
                                 <td>Upload the diary daily for the second week of the first month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 3</th>
+                                <th className="table_week_font" scope="row">Week 3</th>
                                 <td>Upload the diary daily for the third week of the first month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 4</th>
+                                <th className="table_week_font" scope="row">Week 4</th>
                                 <td>Upload the diary daily for the forth week of the first month</td>
 
                                 <td>< input type="file"/></td>
@@ -75,25 +75,25 @@ const DailyDiary = (props) => {
                          data-bs-parent="#accordionExample">
                         <table className=" table">
                             <tr>
-                                <th scope="row">Week 1</th>
+                                <th className="table_week_font" scope="row">Week 1</th>
                                 <td>Upload the diary daily for the first week of the second month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 2</th>
+                                <th className="table_week_font" scope="row">Week 2</th>
                                 <td>Upload the diary daily for the second week of the second month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 3</th>
+                                <th className="table_week_font" scope="row">Week 3</th>
                                 <td>Upload the diary daily for the third week of the second month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 4</th>
+                                <th className="table_week_font" scope="row">Week 4</th>
                                 <td>Upload the diary daily for the forth week of the second month</td>
 
                                 <td>< input type="file"/></td>
@@ -114,25 +114,25 @@ const DailyDiary = (props) => {
                          data-bs-parent="#accordionExample">
                         <table className=" table">
                             <tr>
-                                <th scope="row">Week 1</th>
+                                <th className="table_week_font" scope="row">Week 1</th>
                                 <td>Upload the diary daily for the first week of the third month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 2</th>
+                                <th className="table_week_font" scope="row">Week 2</th>
                                 <td>Upload the diary daily for the second week of the third month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 3</th>
+                                <th className="table_week_font" scope="row">Week 3</th>
                                 <td>Upload the diary daily for the third week of the third month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 4</th>
+                                <th className="table_week_font" scope="row">Week 4</th>
                                 <td>Upload the diary daily for the forth week of the third month</td>
 
                                 <td>< input type="file"/></td>
@@ -153,25 +153,25 @@ const DailyDiary = (props) => {
                          data-bs-parent="#accordionExample">
                         <table className=" table">
                             <tr>
-                                <th scope="row">Week 1</th>
+                                <th className="table_week_font" scope="row">Week 1</th>
                                 <td>Upload the diary daily for the first week of the forth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 2</th>
+                                <th className="table_week_font" scope="row">Week 2</th>
                                 <td>Upload the diary daily for the second week of the forth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 3</th>
+                                <th className="table_week_font" scope="row">Week 3</th>
                                 <td>Upload the diary daily for the third week of the forth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 4</th>
+                                <th className="table_week_font" scope="row">Week 4</th>
                                 <td>Upload the diary daily for the forth week of the forth month</td>
 
                                 <td>< input type="file"/></td>
@@ -192,25 +192,25 @@ const DailyDiary = (props) => {
                          data-bs-parent="#accordionExample">
                         <table className=" table">
                             <tr>
-                                <th scope="row">Week 1</th>
+                                <th className="table_week_font" scope="row">Week 1</th>
                                 <td>Upload the diary daily for the first week of the fifth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 2</th>
+                                <th className="table_week_font" scope="row">Week 2</th>
                                 <td>Upload the diary daily for the second week of the fifth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 3</th>
+                                <th className="table_week_font" scope="row">Week 3</th>
                                 <td>Upload the diary daily for the third week of the fifth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 4</th>
+                                <th className="table_week_font" scope="row">Week 4</th>
                                 <td>Upload the diary daily for the forth week of the fifth month</td>
 
                                 <td>< input type="file"/></td>
@@ -231,25 +231,25 @@ const DailyDiary = (props) => {
                          data-bs-parent="#accordionExample">
                         <table className=" table">
                             <tr>
-                                <th scope="row">Week 1</th>
+                                <th className="table_week_font" scope="row">Week 1</th>
                                 <td>Upload the diary daily for the first week of the sixth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 2</th>
+                                <th className="table_week_font" scope="row">Week 2</th>
                                 <td>Upload the diary daily for the second week of the sixth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 3</th>
+                                <th className="table_week_font" scope="row">Week 3</th>
                                 <td>Upload the diary daily for the third week of the sixth month</td>
 
                                 <td>< input type="file"/></td>
                             </tr>
                             <tr>
-                                <th scope="row">Week 4</th>
+                                <th className="table_week_font" scope="row">Week 4</th>
                                 <td>Upload the diary daily for the forth week of the sixth month</td>
 
                                 <td>< input type="file"/></td>
@@ -258,6 +258,31 @@ const DailyDiary = (props) => {
                         </table>
                     </div>
                 </div>
+
+                <div className="accordion-item itemStyle">
+                    <h2 className="accordion-header" id="heading7">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                            All
+                        </button>
+                    </h2>
+                    <div id="collapse7" className="container accordion-collapse collapse" aria-labelledby="heading7"
+                         data-bs-parent="#accordionExample">
+                        <table className=" table">
+                            <tr>
+
+                                <td>Combine all the relevant diaries for 6 months and upload as a single file</td>
+
+                                <td>< input type="file"/></td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+                </div>
+
+
+
 
 
 

@@ -18,7 +18,8 @@
 
 .h4tag{
     font-family: cursive;
-    color: gray;
+    color: #5c5959;
+    font-size: larger;
 }
 
 .accordionStyle{
@@ -29,4 +30,18 @@
 .imageCol,
 .topicCol{
     margin-left: 95px;
+}
+
+.table_week_font{
+    font-weight: 500;
+}
+
+.accordion-button:not(.collapsed) {
+
+    background-color: #cbcbcb;
+
+}
+
+.accordion-button:not(.collapsed) {
+    color: black;
 }
