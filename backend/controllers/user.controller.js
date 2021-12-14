@@ -84,18 +84,116 @@ const sendEmail = require("../utils/sendEmail");
 //   }
 // };
 
-exports.register = async (req, res, next) => {
-  //const { email, password } = req.body;
-
+exports.directregister = async (req, res, next) => {
   var emailRegex =
     /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
   var passwordRegex =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
   try {
+    if (!req.body.email || !req.body.password) {
+      return res.status(400).send({ message: "Fields cannot be empty!!!" });
+    }
+
+    if (req.body.email.length > 254) {
+      return res.status(400).send({ message: "Invalid Email!!!" });
+    }
+
+    var validEmail = emailRegex.test(req.body.email);
+    if (!validEmail) {
+      return res.status(400).send({ message: "Invalid Email!!!" });
+    }
+
+    const x = req.params;
+    console.log(!x)
+    if (!x) {
+      var validPassword = passwordRegex.test(req.body.password);
+      if (!validPassword) {
+        return res.status(400).send({
+          message:
+            "Password must contain minimum 8 characters, one UPPERCASE letter, one lowercase letter, one number and one special character!!!",
+        });
+      }
+
+      // const emailHold = req.body.email;
+      // localStorage.setItem('emailHold', emailHold);
+      // console.log(emailHold);
+
+      const email = { email: req.body.email };
+      const ob1 = new supervisorModel(email);
+
+      const pw = { password: req.body.password };
+      const ob2 = new supervisorModel(pw);
+
+      const role = { role: "supervisor" };
+      const ob3 = new supervisorModel(role);
+
+      const result = supervisorModel.directregister(ob1, ob2, ob3);
+
+      result
+        .then((user) => {
+          res
+            .status(200)
+            .json({ success: true, data: "Successfully Registered!" });
+        })
+        .catch((err) => {
+          console.log(err);
+          return res.status(500).send({ err });
+        });
+    } else {
+      var parts = req.body.email.split("@");
+      if (parts[0].length > 64 || parts[1] != "my.sliit.lk") {
+        return res.status(400).send({ message: "Invalid Email!!!" });
+      }
+
+      var validPassword = passwordRegex.test(req.body.password);
+      if (!validPassword) {
+        return res.status(400).send({
+          message:
+            "Password must contain minimum 8 characters, one UPPERCASE letter, one lowercase letter, one number and one special character!!!",
+        });
+      }
+
+      // const emailHold = req.body.email;
+      // localStorage.setItem('emailHold', emailHold);
+      // console.log(emailHold);
+
+      const email = { email: req.body.email };
+      const ob1 = new userModel(email);
+
+      const pw = { password: req.body.password };
+      const ob2 = new userModel(pw);
+
+      const role = { role: "intern" };
+      const ob3 = new userModel(role);
+
+      const result = userModel.directregister(ob1, ob2, ob3);
+
+      result
+        .then((user) => {
+          res
+            .status(200)
+            .json({ success: true, data: "Successfully Registered!" });
+        })
+        .catch((err) => {
+          console.log(err);
+          return res.status(500).send({ err });
+        });
+    }
+  } catch (error) {
+    return res.status(500).send({ msg: error.message });
+  }
+};
+
+exports.register = async (req, res, next) => {
+  var emailRegex =
+    /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+
+  //const email = localStorage.getItem('emailHold');
+
+  try {
     if (
       !req.body.email ||
-      !req.body.password ||
       !req.body.full_name ||
       !req.body.it_number ||
       !req.body.registration_year ||
@@ -132,29 +230,24 @@ exports.register = async (req, res, next) => {
     //   return res.status(400).send({ message: "Invalid Email!!!" });
     // }
 
-    var validPassword = passwordRegex.test(req.body.password);
-    if (!validPassword) {
-      return res.status(400).send({
-        message:
-          "Password must contain minimum 8 characters, one UPPERCASE letter, one lowercase letter, one number and one special character!!!",
-      });
-    }
-
     const userData = new userModel(req.body);
 
     const result = userModel.register(userData);
 
     result
       .then((user) => {
-        const accessToken = createAccessToken({ id: user });
-        const refreshtoken = createRefreshToken({ id: user });
+        // const accessToken = createAccessToken({ id: user });
+        // const refreshtoken = createRefreshToken({ id: user });
 
-        res.cookie("refreshtoken", refreshtoken, {
-          httpOnly: true,
-          path: "/api/refresh_token",
-          maxAge: 7 * 24 * 60 * 60 * 1000,
-        });
-        res.send({ accessToken });
+        // res.cookie("refreshtoken", refreshtoken, {
+        //   httpOnly: true,
+        //   path: "/api/refresh_token",
+        //   maxAge: 7 * 24 * 60 * 60 * 1000,
+        // });
+        // res.send({ accessToken });
+        res
+          .status(200)
+          .json({ success: true, data: "Successfully Registered!" });
       })
       .catch((err) => {
         console.log(err);
@@ -164,7 +257,7 @@ exports.register = async (req, res, next) => {
     if (!req.body.supervisor_email) {
       next();
     } else {
-      const emailSup = req.body.supervisor_email
+      const emailSup = req.body.supervisor_email;
       const supervisorEmail = { email: req.body.supervisor_email };
       const supervisorAvailable = new supervisorModel(supervisorEmail);
       const result = supervisorModel.supervisorCheck(supervisorAvailable);
@@ -172,7 +265,7 @@ exports.register = async (req, res, next) => {
       result
         .then((output) => {
           if (output === 1) {
-            const reset = `http://localhost:3000/supervisorLogin/`;   //supervisor login page
+            const reset = `http://localhost:3000/student/login/`; //supervisor login page
 
             const message = `
               <h1>Supervisor Login</h1>
@@ -194,7 +287,7 @@ exports.register = async (req, res, next) => {
               return next(new ErrorResponse("Email could not be sent", 500));
             }
           } else {
-            const reset = `http://localhost:3000/supervisorRegister/${emailSup}`;   //supervisor register page
+            const reset = `http://localhost:3000/student/register/${emailSup}`; //supervisor register page
 
             const message = `
               <h1>Supervisor Register</h1>
