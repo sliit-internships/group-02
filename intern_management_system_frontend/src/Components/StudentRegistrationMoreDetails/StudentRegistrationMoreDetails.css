@@ -1,0 +1,42 @@
+.purpleBtn button:nth-child(1) {
+    border: 1px solid #8E24AA !important;
+    color: #8E24AA;
+    height: 40px
+}
+
+.purpleBtn button:nth-child(1):hover {
+    border: 1px solid #8E24AA !important;
+    color: #fff;
+    height: 40px;
+    background-color: #8E24AA
+}
+
+.purpleBtn button:nth-child(2) {
+    border: 1px solid #8E24AA !important;
+    background-color: #8E24AA;
+    color: #fff;
+    height: 40px
+}.purpleBtn button:nth-child(1) {
+     border: 1px solid #8E24AA !important;
+     color: #8E24AA;
+     height: 40px
+ }
+
+.purpleBtn button:nth-child(1):hover {
+    border: 1px solid #8E24AA !important;
+    color: #fff;
+    height: 40px;
+    background-color: #8E24AA
+}
+
+.btn-outline-primary {
+
+    border: none;
+}
+
+.purpleBtn button:nth-child(2) {
+    border: 1px solid #8E24AA !important;
+    background-color: #8E24AA;
+    color: #fff;
+    height: 40px
+}
