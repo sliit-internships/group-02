@@ -15,6 +15,7 @@ const user = function (User) {
   this.created_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   this.updated_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   this.password = User.password;
+  this.supervisor_email = User.supervisor_email;
 };
 
 user.login = async (details) => {
@@ -74,7 +75,7 @@ user.register = async (details) => {
               reject(new Error(err.message));
             } else {
               db.query(
-                `INSERT INTO users (full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date, created_at, updated_at, password) VALUES ('${details.full_name}', '${details.it_number}', '${details.registration_year}', '${details.second_year_completion_year}', '${details.second_year_completion_semester}', '${details.specialization}', '${details.mobile_number}', '${details.home_number}', '${details.email}', '${details.internship_start_date}', '${details.created_at}', '${details.updated_at}', '${hash}')`,
+                `INSERT INTO users (full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date, created_at, updated_at, password, supervisor_email) VALUES ('${details.full_name}', '${details.it_number}', '${details.registration_year}', '${details.second_year_completion_year}', '${details.second_year_completion_semester}', '${details.specialization}', '${details.mobile_number}', '${details.home_number}', '${details.email}', '${details.internship_start_date}', '${details.created_at}', '${details.updated_at}', '${hash}', '${details.supervisor_email}')`,
                 (error, result) => {
                   if (error) {
                     console.log("Error with DB2", err);
