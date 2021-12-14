@@ -1,0 +1,73 @@
+.home_row {
+
+    height: 761px;
+    margin-right: 0px;
+    background: #7F00FF;
+    background: -webkit-linear-gradient(to right, #E100FF, #992dec);
+    background: linear-gradient(to right, #E100FF, #992dec);
+
+}
+
+.home_img_1 {
+    width: 613px;
+    position: absolute;
+    margin-top: -13px;
+    margin-left: -27px;
+}
+
+.sliit_logo {
+    margin-left: 174px;
+    margin-top: 112px;
+}
+
+.home_card {
+    width: 1422px;
+    height: 652px;
+    margin-top: 50px;
+    margin-left: 64px;
+    box-shadow: 0 1px 9px rgb(68 68 68 / 15%), 0 10px 7px rgb(59 59 59 / 13%);
+
+}
+
+.home_png3 {
+    width: 553px;
+    margin-top: -598px;
+}
+
+.home_png2 {
+    width: 520px;
+    margin-top: 14px;
+    margin-left: 162px;
+}
+
+.home_h1_2 {
+    WIDTH: 531PX;
+    font-size: 60px;
+    text-align: center;
+    color: #504e4e;
+    position: relative;
+}
+
+
+.home_svg2 {
+    width: 551px;
+    margin-top: -33px;
+    margin-left: -28px;
+    position: inherit;
+}
+
+
+.home_nav_link {
+    COLOR: dimgrey;
+    FONT-SIZE: 18PX;
+}
+
+.home_nav_image {
+    width: 146px;
+    position: absolute;
+    margin-left: 515px;
+}
+.home_nav_style{
+    position: relative;
+}
+
