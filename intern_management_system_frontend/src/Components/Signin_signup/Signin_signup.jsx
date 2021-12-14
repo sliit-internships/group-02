@@ -99,7 +99,10 @@ const Signin_signup = (props) => {
                                 </div>
 
 
-                                <button type="submit" data-bs-target="#pills-signIn" className="btn btn-primary login-submitBtn">SAVE CHANGES</button>
+                                <button type="submit" data-bs-target="#pills-signIn" className="btn btn-primary login-submitBtn">SUBMIT</button>
+                                <p className="password_change_pTage"> After entering your email here, you will receive a rest link to set the password via your email. There you can reset the password. </p>
+
+
                             </form>
                         </div>
 

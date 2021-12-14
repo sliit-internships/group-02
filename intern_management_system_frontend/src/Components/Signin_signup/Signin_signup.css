@@ -6,7 +6,10 @@
 .loginCard{
     width: 70%;
     height: 500px;
-    margin: 20px;
+    margin-left: 120px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .signIn-Up_font{
@@ -43,15 +46,22 @@
 
 .rowStyle{
     box-shadow: 0 1px 9px rgba(68, 68, 68, 0.15), 0 10px 7px rgba(59, 59, 59, 0.13);
+    margin: 63px;
 }
 
 .login-submitBtn{
-    width: 404px;
+    width: 355px;
     margin-top: 20px;
 }
 
 .forgotBtn{
     margin-top: 15px;
+}
+
+.password_change_pTage{
+    margin-top: 20px;
+    font-style: italic;
+    color: #504e4e;
 }
 
 
