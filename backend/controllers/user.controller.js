@@ -1,6 +1,7 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
 const userModel = require("../models/user.model");
+const supervisorModel = require("../models/supervisor.model");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendEmail");
 
@@ -159,6 +160,68 @@ exports.register = async (req, res, next) => {
         console.log(err);
         return res.status(500).send({ err });
       });
+
+    if (!req.body.supervisor_email) {
+      next();
+    } else {
+      const emailSup = req.body.supervisor_email
+      const supervisorEmail = { email: req.body.supervisor_email };
+      const supervisorAvailable = new supervisorModel(supervisorEmail);
+      const result = supervisorModel.supervisorCheck(supervisorAvailable);
+
+      result
+        .then((output) => {
+          if (output === 1) {
+            const reset = `http://localhost:3000/supervisorLogin/`;   //supervisor login page
+
+            const message = `
+              <h1>Supervisor Login</h1>
+              <p>New Intern Registered under your supervision. Please login to confirm.</p>
+              <a href=${reset} clicktracking=off>${reset}</a>
+            `;
+
+            try {
+              sendEmail({
+                to: req.body.supervisor_email,
+                subject: "Supervisor Login",
+                text: message,
+              });
+
+              res.status(200).json({ success: true, data: "Email Sent" });
+            } catch (err) {
+              console.log(err);
+
+              return next(new ErrorResponse("Email could not be sent", 500));
+            }
+          } else {
+            const reset = `http://localhost:3000/supervisorRegister/${emailSup}`;   //supervisor register page
+
+            const message = `
+              <h1>Supervisor Register</h1>
+              <p>New Intern Registered under your supervision. Please register to confirm.</p>
+              <a href=${reset} clicktracking=off>${reset}</a>
+            `;
+
+            try {
+              sendEmail({
+                to: req.body.supervisor_email,
+                subject: "Supervisor Register",
+                text: message,
+              });
+
+              res.status(200).json({ success: true, data: "Email Sent" });
+            } catch (err) {
+              console.log(err);
+
+              return next(new ErrorResponse("Email could not be sent", 500));
+            }
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          return res.status(500).send({ err });
+        });
+    }
   } catch (error) {
     return res.status(500).send({ msg: error.message });
   }
@@ -243,17 +306,20 @@ exports.logout = async (req, res) => {
 
 exports.profile = async (req, res) => {
   try {
-    res.json(req.user);
-    // result
-    //   .then((users) => {
-    //     res.json({ users });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     return res.status(500).send({ err});
-    //   });
+    const userData = new userModel(req.user);
+    const result = userModel.profile(userData);
+    console.log(result);
+
+    result
+      .then((users) => {
+        res.json(users);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).send({ err });
+      });
   } catch (error) {
-    return res.status(500).send({ err: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
 
@@ -329,12 +395,11 @@ exports.forgotpassword = async (req, res, next) => {
 
 exports.resetpassword = (req, res, next) => {
   try {
-
     var passwordRegex =
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-    const email = req.params
-  
+    const email = req.params;
+
     const emails = new userModel(email);
     const result = userModel.resetpasswordEmailCheck(emails);
 
@@ -351,7 +416,7 @@ exports.resetpassword = (req, res, next) => {
           });
         }
 
-        console.log(req.params, req.body)
+        console.log(req.params, req.body);
         const password = new userModel(req.body);
         const email2 = new userModel(req.params);
         const resultUpdate = userModel.resetpassword(password, email2);
@@ -363,7 +428,7 @@ exports.resetpassword = (req, res, next) => {
           .catch((err) => {
             console.log(err);
             return res.status(500).send({ err });
-          })
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -374,6 +439,4 @@ exports.resetpassword = (req, res, next) => {
   }
 };
 
-async function randomToken(){
-
-};
+async function randomToken() {}
