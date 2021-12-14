@@ -16,6 +16,7 @@ const user = function (User) {
   this.updated_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   this.password = User.password;
   this.supervisor_email = User.supervisor_email;
+  this.role = User.role;
 };
 
 user.login = async (details) => {
@@ -39,7 +40,7 @@ user.login = async (details) => {
             }
             if (result) {
               console.log("Successful");
-              resolve(res[0].it_number);
+              resolve(res[0].role);
             } else {
               console.log("Password inserted is not matching");
               reject("Credentials inserted are incorrect");
@@ -55,27 +56,72 @@ user.login = async (details) => {
   return response;
 };
 
+user.directregister = async (em, pw, role) => {
+  console.log(em, pw, role);
+  const response = new Promise((resolve, reject) => {
+    db.query(`SELECT id FROM users WHERE email = ?`, [em.email], (err, res) => {
+      if (err) {
+        console.log("Error with DB1", err);
+        reject(new Error(err.message));
+      } else if (res.length) {
+        console.log("User already exists");
+        reject("User Exists");
+      } else {
+        bcrypt.hash(pw.password, 10, (err, hash) => {
+          if (err) {
+            console.log("Error with hashing");
+            reject(new Error(err.message));
+          } else {
+            db.query(
+              `INSERT INTO users ( email, created_at, updated_at, password, role) VALUES ('${em.email}', '${role.created_at}', '${role.updated_at}', '${hash}', '${role.role}')`,
+              (error, result) => {
+                if (error) {
+                  console.log("Error with DB2", err);
+                  reject(new Error(error.message));
+                }
+                if (result) {
+                  db.query(
+                    `INSERT INTO interns ( email, created_at, updated_at, password) VALUES ('${em.email}', '${role.created_at}', '${role.updated_at}', '${hash}')`,
+                    (error, result1) => {
+                      if (result1) {
+                        console.log("Added User");
+                        resolve("User Added");
+                      } else {
+                        console.log("User was not added");
+                        reject("User was not added", result1);
+                      }
+                    }
+                  );
+                } else {
+                  console.log("User was not added");
+                  reject("User was not added", result);
+                }
+              }
+            );
+          }
+        });
+      }
+    });
+  });
+  return response;
+};
+
 user.register = async (details) => {
-  console.log(details);
   const response = new Promise((resolve, reject) => {
     db.query(
-      `SELECT id FROM users WHERE email = ?`,
+      `SELECT it_number FROM interns WHERE email = ?`,
       [details.email],
       (err, res) => {
         if (err) {
           console.log("Error with DB1", err);
           reject(new Error(err.message));
-        } else if (res.length) {
+        } else if (res != null) {
           console.log("User already exists");
           reject("User Exists");
         } else {
-          bcrypt.hash(details.password, 10, (err, hash) => {
-            if (err) {
-              console.log("Error with hashing");
-              reject(new Error(err.message));
-            } else {
               db.query(
-                `INSERT INTO interns (full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date, created_at, updated_at, password, supervisor_email) VALUES ('${details.full_name}', '${details.it_number}', '${details.registration_year}', '${details.second_year_completion_year}', '${details.second_year_completion_semester}', '${details.specialization}', '${details.mobile_number}', '${details.home_number}', '${details.email}', '${details.internship_start_date}', '${details.created_at}', '${details.updated_at}', '${hash}', '${details.supervisor_email}')`,
+                `UPDATE interns SET full_name='${details.full_name}', it_number='${details.it_number}', registration_year='${details.registration_year}', second_year_completion_year='${details.second_year_completion_year}', second_year_completion_semester='${details.second_year_completion_semester}', specialization='${details.specialization}', mobile_number='${details.mobile_number}', home_number='${details.home_number}', internship_start_date='${details.internship_start_date}', created_at='${details.created_at}', updated_at='${details.updated_at}', supervisor_email='${details.supervisor_email}' WHERE email = ?`,
+                [details.email],
                 (error, result) => {
                   if (error) {
                     console.log("Error with DB2", err);
@@ -90,8 +136,8 @@ user.register = async (details) => {
                   }
                 }
               );
-            }
-          });
+            
+          
         }
       }
     );
@@ -102,7 +148,7 @@ user.register = async (details) => {
 user.profile = async (details) => {
   const response = await new Promise((resolve, reject) => {
     db.query(
-      `SELECT full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date FROM users WHERE it_number = ?`,
+      `SELECT full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date FROM interns WHERE it_number = ?`,
       [details.it_number],
       (err, res) => {
         if (err || !res.length) {
@@ -168,7 +214,7 @@ user.resetpassword = async (pw, em) => {
         reject(new Error(err.message));
       } else {
         db.query(
-          `UPDATE users SET password='${hash}' WHERE email='${em.email}'`,
+          `UPDATE interns SET password='${hash}' WHERE email='${em.email}'`,
           (error, result) => {
             if (error) {
               console.log("Error with DB2", err);

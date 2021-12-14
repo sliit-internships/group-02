@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const {
+  directregister,
   register,
   login,
   logout,
@@ -11,6 +12,7 @@ const {
   refreshToken,
 } = require("../controllers/user.controller");
 
+router.route("/directregister/").post(directregister);
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/logout").get(logout);
