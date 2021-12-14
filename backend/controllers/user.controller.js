@@ -104,9 +104,8 @@ exports.directregister = async (req, res, next) => {
       return res.status(400).send({ message: "Invalid Email!!!" });
     }
 
-    const x = req.params;
-    console.log(!x)
-    if (!x) {
+    const x = req.body.role;
+    if (x === "supervisor") {
       var validPassword = passwordRegex.test(req.body.password);
       if (!validPassword) {
         return res.status(400).send({
@@ -255,7 +254,7 @@ exports.register = async (req, res, next) => {
       });
 
     if (!req.body.supervisor_email) {
-      next();
+      return res.json({message: "Supervisor not found!"});
     } else {
       const emailSup = req.body.supervisor_email;
       const supervisorEmail = { email: req.body.supervisor_email };
@@ -366,16 +365,13 @@ exports.login = async (req, res) => {
 
     result
       .then((users) => {
-        const accessToken = createAccessToken({ id: users });
-        const refreshtoken = createRefreshToken({ id: users });
-        console.log(refreshtoken);
-
-        res.cookie("refreshtoken", refreshtoken, {
-          httpOnly: true,
-          path: "/api/refresh_token",
-          maxAge: 7 * 24 * 60 * 60 * 1000,
-        });
-        return res.send({ accessToken });
+        if(users === "intern"){
+          return res.status(200).send({ Message: "Welcome Intern" });
+        }else if(users === "admin"){
+          return res.status(200).send({ Message: "Welcome Admin"});
+        } else {
+          return res.status(200).send({ Message: "Welcome Supervisor" });
+        }
       })
       .catch((err) => {
         console.log(err);

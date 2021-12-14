@@ -12,7 +12,7 @@ const {
   refreshToken,
 } = require("../controllers/user.controller");
 
-router.route("/directregister/:role").post(directregister);
+router.route("/directregister/").post(directregister);
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/logout").get(logout);

@@ -40,7 +40,7 @@ user.login = async (details) => {
             }
             if (result) {
               console.log("Successful");
-              resolve(res[0].it_number);
+              resolve(res[0].role);
             } else {
               console.log("Password inserted is not matching");
               reject("Credentials inserted are incorrect");
@@ -115,7 +115,7 @@ user.register = async (details) => {
         if (err) {
           console.log("Error with DB1", err);
           reject(new Error(err.message));
-        } else if (res[0].it_number != null) {
+        } else if (res != null) {
           console.log("User already exists");
           reject("User Exists");
         } else {
