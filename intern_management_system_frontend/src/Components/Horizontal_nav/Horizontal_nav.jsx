@@ -7,21 +7,15 @@ import "./Horizontal_nav.css"
 const Horizontal_nav = (props) => {
     return (
         <div>
-            <ul className="nav justify-content-center fixed-top">
+            <ul className="nav justify-content-end fixed-top">
                 <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Active</a>
+                    <a className="nav-link active navLinkFont" aria-current="page" href="/student_home">HOME</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Link</a>
+                    <a className="nav-link navLinkFont" href="/login">LOGOUT</a>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Link</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link ">Disabled</a>
-                </li>
-            </ul>
 
+            </ul>
 
         </div>
     );
