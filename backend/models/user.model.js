@@ -102,7 +102,7 @@ user.register = async (details) => {
 user.profile = async (details) => {
   const response = await new Promise((resolve, reject) => {
     db.query(
-      `SELECT full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date FROM users WHERE it_number = ?`,
+      `SELECT full_name, it_number, registration_year, second_year_completion_year, second_year_completion_semester, specialization, mobile_number, home_number, email, internship_start_date FROM interns WHERE it_number = ?`,
       [details.it_number],
       (err, res) => {
         if (err || !res.length) {
@@ -168,7 +168,7 @@ user.resetpassword = async (pw, em) => {
         reject(new Error(err.message));
       } else {
         db.query(
-          `UPDATE users SET password='${hash}' WHERE email='${em.email}'`,
+          `UPDATE interns SET password='${hash}' WHERE email='${em.email}'`,
           (error, result) => {
             if (error) {
               console.log("Error with DB2", err);
